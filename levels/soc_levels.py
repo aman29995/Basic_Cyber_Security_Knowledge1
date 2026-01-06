@@ -34,10 +34,28 @@ def soc_level_1(mode):
         st.session_state.soc_level += 1
 def soc_level_2(mode):
     st.subheader("🚨 SOC Level 2 – Containment")
+
+    st.write("⚠️ Login anomalies detected.")
+
+    login_logs = [
+        {"User": "employee1", "IP": "185.203.119.45", "Status": "Failed"},
+        {"User": "employee1", "IP": "185.203.119.45", "Status": "Success"},
+        {"User": "employee1", "IP": "185.203.119.45", "Status": "Success"}
+    ]
+
+    st.table(login_logs)
+
     if st.button("🔒 Reset Credentials", key="soc2"):
+        st.success("Credentials reset and sessions revoked.")
+
+        st.code("""
+User account locked
+Password reset enforced
+Active sessions terminated
+        """)
+
         add_score(20)
         st.session_state.soc_level += 1
-
 def soc_level_3(mode):
     st.subheader("🚨 SOC Level 3 – Root Cause & Handover")
     if st.button("📤 Hand-off to VM Team", key="soc3"):
